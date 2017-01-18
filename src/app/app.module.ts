@@ -27,6 +27,8 @@ import {PopupSkillComponent} from './character/form-character/popup-skill/popup-
 
 import {MarkdownPipe} from './shared/pipes/markdown.pipe';
 
+import {MenubarModule} from 'primeng/primeng';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import {MarkdownPipe} from './shared/pipes/markdown.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    MenubarModule
   ],
   providers: [
     AdvantageService,
