@@ -9,7 +9,7 @@ import {Observable} from 'rxjs/Rx';
   styleUrls: ['./advantage.component.css']
 })
 export class AdvantageComponent implements OnInit {
-  title = '7th Sea - Avantages';
+  title = 'Admin - Avantages';
   advantages: Observable<Advantage[]>;
 
   constructor(private advantageService: AdvantageService) {

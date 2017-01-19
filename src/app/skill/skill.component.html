@@ -1,5 +1,5 @@
 <div class="starter-template">
-  <h1>{{title}}</h1>
+  <h2>{{title}}</h2>
   
   <br/>
 
@@ -15,11 +15,11 @@
       <td>{{skill.cost}}</td>
       <td [innerHTML]="skill.description|markdown"></td>
       <td>
-        <a class="btn btn-primary btn-sm" routerLink="/skills/{{skill._id.$oid}}/edit" routerLinkActive="active">Modifier</a>
-        <a class="btn btn-danger btn-sm" routerLink="/skills/{{skill._id.$oid}}/delete" routerLinkActive="active">Suppprimer</a>
+        <button pButton type="button" label="Modifier" routerLink="/skills/{{skill._id.$oid}}/edit"></button>
+        <button pButton type="button" label="Suppprimer" routerLink="/skills/{{skill._id.$oid}}/delete" class="ui-button-danger"></button>
       </td>
     </tr>
   </table>
 
-  <a class="btn btn-success" routerLink="/skills/new" routerLinkActive="active">Ajouter une compétence</a>
+  <button pButton type="button" label="Ajouter une compétence" routerLink="/skills/new" class="ui-button-success"></button>
 </div>

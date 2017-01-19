@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./skill.component.css']
 })
 export class SkillComponent implements OnInit {
-  title = '7th Sea - Compétences';
+  title = 'Admin - Compétences';
   skills: Observable<Skill[]>;
 
   constructor(private skillService: SkillService) { }
