@@ -27,8 +27,8 @@ import {PopupSkillComponent} from './character/form-character/popup-skill/popup-
 
 import {MarkdownPipe} from './shared/pipes/markdown.pipe';
 import {RestangularModule} from 'ng2-restangular';
+import {MenubarModule, ButtonModule, DataTableModule, SharedModule} from 'primeng/primeng';
 
-import {MenubarModule, ButtonModule} from 'primeng/primeng';
 export function configFunc(RestangularProvider, http) {
   RestangularProvider.setBaseUrl('https://api.mlab.com/api/1/databases/sevensea/collections');
   RestangularProvider.setDefaultRequestParams({'apiKey': 'aGaPXl3Z7AEh9RlXDnxDuavM6IXdU3V9'});
@@ -58,6 +58,8 @@ export function configFunc(RestangularProvider, http) {
     // Primeng
     MenubarModule,
     ButtonModule,
+    DataTableModule,
+    SharedModule,
     // RestangularModule and making default configs for restanglar
     RestangularModule.forRoot([Http], configFunc)
   ],

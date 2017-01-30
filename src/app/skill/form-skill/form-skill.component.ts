@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Skill} from '../../shared/entity/skill'
-import {SkillService} from '../../shared/service/skill.service';
+import {Restangular} from 'ng2-restangular';
 
 @Component({
   selector: 'app-form-skill',
@@ -12,7 +12,7 @@ export class FormSkillComponent implements OnInit {
   private skill: Skill;
 
   constructor(private route: ActivatedRoute,
-              private skillService: SkillService,
+              private restangular: Restangular,
               private router: Router) {
   }
 
@@ -20,13 +20,13 @@ export class FormSkillComponent implements OnInit {
     this.skill = new Skill();
 
     this.route.params.subscribe((params: Params) => {
-      this.skillService.getSkill(params['id'])
+      this.restangular.one('skills', params['id']).get()
         .subscribe(skill => this.skill = skill);
     });
   }
 
   validate(): void {
-    this.skillService.postSkill(this.skill)
+    this.restangular.all('skills').post(this.skill)
       .subscribe(() => this.router.navigate(['/skills']));
   }
 

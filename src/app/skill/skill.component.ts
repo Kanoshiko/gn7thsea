@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Skill } from '../shared/entity/skill'
-import { SkillService } from '../shared/service/skill.service';
-import { Observable } from 'rxjs/Rx';
-
+import {Component, OnInit} from '@angular/core';
+import {Skill} from '../shared/entity/skill';
+import {Restangular} from 'ng2-restangular';
 
 @Component({
   selector: 'app-skill',
@@ -11,12 +9,16 @@ import { Observable } from 'rxjs/Rx';
 })
 export class SkillComponent implements OnInit {
   title = 'Admin - Compétences';
-  skills: Observable<Skill[]>;
+  skills: Skill[] = [];
 
-  constructor(private skillService: SkillService) { }
-  
+  constructor(private restangular: Restangular) {
+  }
+
   ngOnInit() {
-    this.skills = this.skillService.getSkills();
+    this.restangular.all('skills').getList().subscribe(skills => {
+      console.debug(skills);
+      return this.skills = skills;
+    });
   }
 
 }

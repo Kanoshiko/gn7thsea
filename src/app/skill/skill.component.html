@@ -1,25 +1,27 @@
-<div class="starter-template">
+<div class="starter-template" xmlns="http://www.w3.org/1999/html">
   <h2>{{title}}</h2>
-  
-  <br/>
 
-  <table class="table">
-    <tr>
-      <th>Nom</th>
-      <th>Coût</th>
-      <th>Dexcription</th>
-      <th>&nbsp;</th>
-    </tr>
-    <tr *ngFor='let skill of (skills|async)'>
-      <td>{{skill.name}}</td>
-      <td>{{skill.cost}}</td>
-      <td [innerHTML]="skill.description|markdown"></td>
-      <td>
+  <button pButton type="button" label="Ajouter une compétence" routerLink="/skills/new"
+          class="ui-button-success pull-right"
+          style="margin-bottom: 10px"></button>
+
+  <p-dataTable [value]="skills">
+    <p-column field="name" header="Nom"></p-column>
+    <p-column field="cost" header="Coût"></p-column>
+    <p-column field="color" header="Color">
+      <template let-col let-skill="rowData" pTemplate="body">
+        <div [innerHTML]="skill.description|markdown"></div>
+      </template>
+    </p-column>
+    <p-column styleClass="col-button">
+      <template let-skill="rowData" pTemplate="body">
         <button pButton type="button" label="Modifier" routerLink="/skills/{{skill._id.$oid}}/edit"></button>
-        <button pButton type="button" label="Suppprimer" routerLink="/skills/{{skill._id.$oid}}/delete" class="ui-button-danger"></button>
-      </td>
-    </tr>
-  </table>
+        <button pButton type="button" label="Suppprimer" routerLink="/skills/{{skill._id.$oid}}/delete"
+                class="ui-button-danger"></button>
+      </template>
+    </p-column>
+  </p-dataTable>
 
-  <button pButton type="button" label="Ajouter une compétence" routerLink="/skills/new" class="ui-button-success"></button>
 </div>
+
+
