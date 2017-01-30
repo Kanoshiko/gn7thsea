@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {Http, HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {routing, appRoutingProviders} from './app.routing';
@@ -26,8 +26,13 @@ import {DeleteSkillComponent} from './skill/delete-skill/delete-skill.component'
 import {PopupSkillComponent} from './character/form-character/popup-skill/popup-skill.component';
 
 import {MarkdownPipe} from './shared/pipes/markdown.pipe';
+import {RestangularModule} from 'ng2-restangular';
 
 import {MenubarModule, ButtonModule} from 'primeng/primeng';
+export function configFunc(RestangularProvider, http) {
+  RestangularProvider.setBaseUrl('https://api.mlab.com/api/1/databases/sevensea/collections');
+  RestangularProvider.setDefaultRequestParams({'apiKey': 'aGaPXl3Z7AEh9RlXDnxDuavM6IXdU3V9'});
+}
 
 @NgModule({
   declarations: [
@@ -50,8 +55,11 @@ import {MenubarModule, ButtonModule} from 'primeng/primeng';
     FormsModule,
     HttpModule,
     routing,
+    // Primeng
     MenubarModule,
-    ButtonModule
+    ButtonModule,
+    // RestangularModule and making default configs for restanglar
+    RestangularModule.forRoot([Http], configFunc)
   ],
   providers: [
     AdvantageService,
